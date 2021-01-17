@@ -1,0 +1,35 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://121.89.161.209:3306/LeaseOfHouses?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #SpringBoot默认是不注入这些的，需要自己绑定
+    #druid数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+
+server:
+  port: 8084
+  netty:
+    connection-timeout: 50000
+  servlet:
+    context-path: /emap
+
+mybatis:
+  type-aliases-package: com.qdu.entity
+  mapper-locations: classpath:com/qdu/mapper/*.xml
